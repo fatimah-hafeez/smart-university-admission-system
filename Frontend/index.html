@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart University Admission System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🎓 Smart University Admission System</h1>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="add-student">Add Student</button>
+  <button class="tab-btn" data-tab="add-admission">Add Admission</button>
+  <button class="tab-btn" data-tab="view-students">View Students</button>
+  <button class="tab-btn" data-tab="view-admissions">View Admissions</button>
+  <button class="tab-btn" data-tab="reports">Reports & Queries</button>
+</nav>
+
+<main>
+
+  <!-- ================= ADD STUDENT ================= -->
+  <section id="add-student" class="tab-content active">
+    <h2>Add New Student</h2>
+    <form id="studentForm">
+      <div class="grid">
+        <label>First Name
+          <input type="text" name="first_name" required>
+        </label>
+        <label>Last Name
+          <input type="text" name="last_name" required>
+        </label>
+        <label>Date of Birth
+          <input type="date" name="date_of_birth" required>
+        </label>
+        <label>Gender
+          <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label>Phone
+          <input type="text" name="phone">
+        </label>
+        <label>Department
+          <select name="department_id" id="departmentSelect" required></select>
+        </label>
+        <label>Admission Status
+          <select name="admission_status" required>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </label>
+        <label>Blood Group
+          <input type="text" name="blood_group" placeholder="e.g. A+">
+        </label>
+        <label>Emergency Contact
+          <input type="text" name="emergency_contact">
+        </label>
+        <label>Guardian Name
+          <input type="text" name="guardian_name">
+        </label>
+      </div>
+      <button type="submit">Add Student</button>
+    </form>
+    <p id="studentMsg" class="msg"></p>
+  </section>
+
+  <!-- ================= ADD ADMISSION ================= -->
+  <section id="add-admission" class="tab-content">
+    <h2>Add New Admission</h2>
+    <form id="admissionForm">
+      <div class="grid">
+        <label>Student ID
+          <input type="number" name="student_id" required>
+        </label>
+        <label>Admission Date
+          <input type="date" name="admission_date" required>
+        </label>
+        <label>GPA
+          <input type="number" step="0.01" min="0" max="4" name="gpa" required>
+        </label>
+      </div>
+      <button type="submit">Add Admission</button>
+    </form>
+    <p id="admissionMsg" class="msg"></p>
+  </section>
+
+  <!-- ================= VIEW STUDENTS ================= -->
+  <section id="view-students" class="tab-content">
+    <h2>All Students</h2>
+    <button onclick="loadStudents()">Refresh</button>
+    <div id="studentsTable" class="table-wrap"></div>
+  </section>
+
+  <!-- ================= VIEW ADMISSIONS ================= -->
+  <section id="view-admissions" class="tab-content">
+    <h2>All Admissions</h2>
+    <button onclick="loadAdmissions()">Refresh</button>
+    <div id="admissionsTable" class="table-wrap"></div>
+  </section>
+
+  <!-- ================= REPORTS ================= -->
+  <section id="reports" class="tab-content">
+    <h2>Reports & Queries</h2>
+    <div class="report-buttons">
+      <button onclick="runQuery('average-gpa','Average GPA')">Average GPA</button>
+      <button onclick="runQuery('max-scholarship','Maximum Scholarship')">Max Scholarship</button>
+      <button onclick="runQuery('oldest-student','Oldest Student')">Oldest Student</button>
+      <button onclick="runQuery('department-totals','Students per Department')">Students per Department</button>
+      <button onclick="runQuery('uppercase-names','Names in Uppercase')">Names Uppercase</button>
+      <button onclick="runQuery('admission-years','Admission Years')">Admission Years</button>
+      <button onclick="runQuery('starts-with-a','Names Starting with A')">Names Starting with "A"</button>
+      <button onclick="runQuery('recent-admissions','Admitted in Last 30 Days')">Last 30 Days Admissions</button>
+      <button onclick="runQuery('scholarship-range','Scholarship 20k-100k')">Scholarship Rs.20k–100k</button>
+      <button onclick="runQuery('scholarship-and-hostel','Scholarship AND Hostel')">Scholarship + Hostel</button>
+    </div>
+    <h3 id="reportTitle"></h3>
+    <div id="reportResult" class="table-wrap"></div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
